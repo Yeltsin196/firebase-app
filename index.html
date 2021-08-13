@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase</title>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+
+<body>
+    <!-- <div class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myidname">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand">King's Kart</span>
+        </div>
+        <div class="navbar-collapse collapse" id="myidname">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="http://www.yoursitename.com/Home">Home</a>
+                </li>
+                <li>
+                    <a href="http://www.yoursitename.com/EleK">Electronics</a>
+                </li>
+                <li>
+                    <a href="http://www.yoursitename.com/Books">Books</a>
+                </li>
+                <li>
+                    <a href="http://www.yoursitename.com/BustiK">Bustickets</a>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">Firebase App</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myidname"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="myidname">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a id="logout" href="">Logout</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="root">
+        <section class="socialMedia-container mt-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="card px-4">
+
+                        <div class="card-body ">
+
+                            <div>
+                                <div class="mx-auto" id="container-mailimg">
+                                    <img src="./img/mail.svg" alt="Mail" class="w-100">
+                                </div>
+                                <div>
+                                    <label for="mail">Email</label> <br>
+                                    <input class="form-control" type="email" id="mail" name="mail" />
+                                </div>
+                                <div>
+                                    <label for="password">Password</label> <br>
+                                    <input class="form-control" type="password" id="password" name="password" />
+                                </div>
+
+
+                                <button class="btn btn-info mt-4" id="signInWithMail">Login</button>
+
+                            </div>
+                            <div class="row mt-4">
+                                <button class="btn btn-light shadow p-3 mb-5 bg-white rounded" id="googleLogin">Iniciar
+                                    sesión con google
+                                    <img src="./img/google.svg" width="55px" height="55px"
+                                        alt="Sign in with your Google account.">
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+    </div>
+</body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+
+<body>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+
+
+
+
+
+</html>
