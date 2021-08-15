@@ -55,7 +55,7 @@ var config = {
                  return value * 3;
              } */
             formatter: function (value) {
-                return value * 3 + ' °C';
+                return value * 4 + ' °C';
             },
         }
     }
@@ -71,7 +71,7 @@ function actualizar() {
 
     config.data.datasets.forEach(function (dataset) {
         dataset.data = randomData();
-        dataset.value = temperatura / 3;
+        dataset.value = 300 / 4;
 
 
     });
@@ -88,7 +88,7 @@ function cargar(config) {
         var ctx = document.getElementById('chart').getContext('2d');
 
         setTimeout(() => {
-            config.data.datasets[0].value = temperatura / 3;
+            config.data.datasets[0].value = temperatura / 4;
 
             window.myGauge = new Chart(ctx, config);
         }, time_default);

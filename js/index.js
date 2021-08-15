@@ -1,19 +1,24 @@
 var time_default = 3000;
 var time_interval_TThermok = 6000;
-var time_interval_hour = 30000;
+var time_interval_hour = 300000;
+var time_interval_minute = 30000;
+var time_interval_day = 30000;
 var temperatura;
 var temperatura_hora = [];
+var temperatura_minuto = [];
+var temperatura_dia = [];
 var fecha_hoy = new Date();
 $(document).ready(function () {
 
     read_temp_TThermok();
     read_temp_Hora();
+    read_temp_Minutes();
+    read_temp_Days();
     if (localStorage.getItem('token') != null) {
         $("#root").css({ "display": "none" });
         $("#app").css({ "display": "block" });
         $("#logoutli").css({ "display": "flex" });
     }
-
 
 
 });
@@ -42,6 +47,7 @@ function read_temp_TThermok() {
         for (var index in temperatura) {
             temp_aux = temperatura[index];
             temperatura = temp_aux;
+            /*     console.log(temperatura); */
         }
 
     });
@@ -74,6 +80,50 @@ function read_temp_Hora() {
 
 }
 
+function read_temp_Minutes() {
+
+    // Get a reference to the database service
+
+    temperatura_minuto = [];
+    var minuto;
+    var minutoRef = firebase.database().ref('Nodemcu/Minutos').limitToLast(10);
+
+
+    minutoRef.on('value', function (snapshot) {
+        var minutoAux = snapshot.val();
+
+        for (var index in minutoAux) {
+            minuto = minutoAux[index];
+            temperatura_minuto.push(parseFloat(minuto));
+
+        }
+        /*   console.log(temperatura_hora); */
+
+    });
+
+
+
+}
+function read_temp_Days() {
+    // Get a reference to the database service
+
+    temperatura_dia = [];
+    var dia;
+    var diaRef = firebase.database().ref('Nodemcu/Dia').limitToLast(10);
+
+
+    diaRef.on('value', function (snapshot) {
+        var diaAux = snapshot.val();
+
+        for (var index in diaAux) {
+            dia = diaAux[index];
+            temperatura_dia.push(parseFloat(dia));
+
+        }
+
+        /*   console.log(temperatura_dia); */
+    });
+}
 const auth = firebase.auth();
 $("#signInWithMail").on("click", function () {
     var email = $("#mail").val();
