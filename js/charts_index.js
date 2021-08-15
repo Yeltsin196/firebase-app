@@ -1,28 +1,27 @@
 
+
 var randomScalingFactor = function () {
     return Math.round(Math.random() * 100);
 };
 
 var randomData = function () {
-    return [
-        20,
-        40,
-        63,
-        109
-    ];
+
+    return [52, 22, 17, 78];
 };
 
 var randomValue = function (data) {
+    /* console.log(data); */
     return Math.max.apply(null, data) * Math.random();
 };
 
 var data = randomData();
-var value = randomValue(data).toFixed(2);
+
+var value = 0;
 
 var config = {
     type: 'gauge',
     data: {
-        //labels: ['Success', 'Warning', 'Warning', 'Error'],
+        labels: ['Success', 'Warning', 'Warning', 'Error'],
         datasets: [{
             data: data,
             value: value,
@@ -52,25 +51,46 @@ var config = {
             color: 'rgba(0, 0, 0, 1)'
         },
         valueLabel: {
-            /*   formatter: Math.round */
+            /*  callback: function (value) {
+                 return value * 3;
+             } */
+            formatter: function (value) {
+                return value * 3 + ' °C';
+            },
         }
     }
 };
 
-window.onload = function () {
-    var ctx = document.getElementById('chart').getContext('2d');
-    console.log(config);
-    window.myGauge = new Chart(ctx, config);
-};
+cargar(config)
+setInterval(() => {
+    actualizar();
+}, time_interval_hour);
 
-/* document.getElementById('randomizeData').addEventListener('click', function () {
+
+function actualizar() {
+
     config.data.datasets.forEach(function (dataset) {
         dataset.data = randomData();
-        console.log(dataset.data);
-        dataset.value = randomValue(dataset.data).toFixed(2);
+        dataset.value = temperatura / 3;
 
-        console.log(dataset.value);
+
     });
 
     window.myGauge.update();
-}); */
+
+}
+
+
+
+function cargar(config) {
+
+    window.onload = function () {
+        var ctx = document.getElementById('chart').getContext('2d');
+
+        setTimeout(() => {
+            config.data.datasets[0].value = temperatura / 3;
+
+            window.myGauge = new Chart(ctx, config);
+        }, time_default);
+    };
+}

@@ -35,9 +35,9 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse" id="myidname">
+            <div class="navbar-collapse collapse justify-content-end" id="myidname">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li id="logoutli">
                         <a id="logout" href="">Logout</a>
                     </li>
 
@@ -80,10 +80,9 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-12 ">
+
+                <div class="col-12 col-md-6 text-center">
                     <h3>Horno panadero</h3>
-                </div>
-                <div class="col-12">
                     <div id="canvas-holder" style="width:100%">
                         <canvas id="chart"></canvas>
                     </div>
@@ -91,8 +90,9 @@
 
 
                 </div>
-                <div class="col-12">
-                    <div class="" style="width:100%">
+                <div class="col-12 col-md-6 text-center ">
+                    <h3>Temperatura por hora</h3>
+                    <div id="temperatura_horas" style="width:100%">
                         <canvas id="medidas1"></canvas>
                     </div>
                 </div>
@@ -103,8 +103,7 @@
         <!--  <button id="randomizeData">Randomize Data</button> -->
 
     </div>
-    <script src="./js/charts_index.js"></script>
-    <script src="./js/medidas1.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
 
     <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
@@ -125,29 +124,25 @@
         crossorigin="anonymous"></script>
     <script>
         // Your web app's Firebase configuration
-        /*  var firebaseConfig = {
-             apiKey: "AIzaSyDtXOvG9tmXRYjDD7O3EYjzz2syivlbTAA",
-             authDomain: "horno-panadero.firebaseapp.com",
-             databaseURL: "https://horno-panadero-default-rtdb.firebaseio.com",
-             projectId: "horno-panadero",
-             storageBucket: "horno-panadero.appspot.com",
-             messagingSenderId: "310370306205",
-             appId: "1:310370306205:web:64ff344cc779b97dffac74"
-         }; */
         var firebaseConfig = {
-            apiKey: "AIzaSyBGU5Vjqpfr59WS8Xoh9ZaEsSiSSaweRIc",
-            authDomain: "fir-app-31a91.firebaseapp.com",
-            databaseURL: "https://fir-app-31a91-default-rtdb.firebaseio.com",
-            projectId: "fir-app-31a91",
-            storageBucket: "fir-app-31a91.appspot.com",
-            messagingSenderId: "709160116984",
-            appId: "1:709160116984:web:530e11d0649e369c78510d",
-            measurementId: "G-V7TG55K95B"
+            apiKey: "AIzaSyDtXOvG9tmXRYjDD7O3EYjzz2syivlbTAA",
+            authDomain: "horno-panadero.firebaseapp.com",
+            databaseURL: "https://horno-panadero-default-rtdb.firebaseio.com",
+            projectId: "horno-panadero",
+            storageBucket: "horno-panadero.appspot.com",
+            messagingSenderId: "310370306205",
+            appId: "1:310370306205:web:64ff344cc779b97dffac74"
         };
+
+
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     </script>
+
     <script src="./js/index.js"></script>
+    <script src="./js/charts_index.js"></script>
+    <script src="./js/temperatura_hora.js"></script>
+
 </body>
 
 
