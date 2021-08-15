@@ -1,20 +1,25 @@
 
 
-
+$(document).ready(function () {
+    read_bd();
+});
 function read_bd() {
     console.log("readbd");
     // Get a reference to the database service
-    var starCountRef = firebase.database().ref('refrigerador');
+    const dbRef = firebase.database().ref('refrigerador');
 
-    console.log(starCountRef);
-    starCountRef.on('value', (snapshot) => {
-        console.log(snapshot);
-        const data = snapshot.val();
-        console.log(data);
-
+    dbRef.get().then((snapshot) => {
+        if (snapshot.exists()) {
+            console.log(snapshot.val());
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error(error);
     });
+
 }
-read_bd();
+
 /* $("#app").css({ "display": "none" }); */
 
 const auth = firebase.auth();

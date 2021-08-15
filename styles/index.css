@@ -1,3 +1,7 @@
 #container-mailimg {
   width: 100px;
 }
+
+#app {
+  display: none;
+}
