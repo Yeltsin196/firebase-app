@@ -6,7 +6,7 @@
   display: none;
 }
 #app {
-  display: block;
+  display: none;
 }
 #root {
   display: none;
@@ -29,4 +29,9 @@ hr {
 
 #cerrar-modal {
   background-color: #e65c00;
+}
+
+li {
+  display: flex;
+  justify-content: flex-end;
 }

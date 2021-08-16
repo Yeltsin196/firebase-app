@@ -19,11 +19,15 @@ $(document).ready(function () {
     read_temp_Months();
     read_temp_Anios();
     if (localStorage.getItem('token') != null) {
-        /*    $("#root").css({ "display": "block" }); */
+
+        $("#root").css({ "display": "none" });
         $("#app").css({ "display": "block" });
-        $("#logoutli").css({ "display": "none" });
+        $("#logoutli").css({ "display": "flex" });
     } else {
-        $("#app").css({ "display": "block" });
+
+        $("#app").css({ "display": "none" });
+        $("#root").css({ "display": "block" });
+        $("#logoutli").css({ "display": "none" });
     }
 
 
@@ -77,7 +81,7 @@ function read_temp_TThermok_ext() {
             temperatura_TThermok.push(parseFloat(TThermok));
 
         }
-
+        /*   console.log(temperatura_TThermok); */
     });
 
 
@@ -193,7 +197,7 @@ function read_temp_Anios() {
     });
 }
 
-/* const auth = firebase.auth();
+const auth = firebase.auth();
 $("#signInWithMail").on("click", function () {
     var email = $("#mail").val();
     var password = $("#password").val();
@@ -210,7 +214,8 @@ $("#signInWithMail").on("click", function () {
 $("#logout").on("click", (e) => {
     e.preventDefault();
     auth.signOut().then((result) => {
-        localStorage.clear();
+
+        localStorage.removeItem("token");
         $("#app").css({ "display": "none" });
         $("#root").css({ "display": "block" });
         $("#logoutli").css({ "display": "none" });
@@ -230,10 +235,10 @@ $("#googleLogin").on("click", (e) => {
         $("#root").css({ "display": "none" });
         $("#app").css({ "display": "block" });
         $("#logoutli").css({ "display": "flex" });
-        read_temp_TThermok();
+        /*     read_temp_TThermok(); */
     })
         .catch(err => {
             console.log(err);
         })
 });
- */
+
