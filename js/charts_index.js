@@ -64,14 +64,14 @@ var config = {
 cargar(config)
 setInterval(() => {
     actualizar();
-}, time_interval_hour);
+}, time_interval_TThermok);
 
 
 function actualizar() {
 
     config.data.datasets.forEach(function (dataset) {
         dataset.data = randomData();
-        dataset.value = 300 / 4;
+        dataset.value = temperatura / 4;
 
 
     });

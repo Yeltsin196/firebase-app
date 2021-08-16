@@ -1,19 +1,27 @@
 var time_default = 3000;
 var time_interval_TThermok = 6000;
-var time_interval_hour = 300000;
+/* var time_interval_hour = 300000;
 var time_interval_minute = 30000;
 var time_interval_day = 30000;
+var time_interval_month = 30000;
+var time_interval_anio = 30000; */
 var temperatura;
+var temperatura_TThermok = [];
 var temperatura_hora = [];
 var temperatura_minuto = [];
 var temperatura_dia = [];
+var temperatura_month = [];
+var temperatura_anio = [];
 var fecha_hoy = new Date();
 $(document).ready(function () {
 
     read_temp_TThermok();
+    read_temp_TThermok_ext();
     read_temp_Hora();
     read_temp_Minutes();
     read_temp_Days();
+    read_temp_Months();
+    read_temp_Anios();
     if (localStorage.getItem('token') != null) {
         $("#root").css({ "display": "none" });
         $("#app").css({ "display": "block" });
@@ -27,10 +35,9 @@ setInterval(() => {
 }, 1000);
 setInterval(() => {
     read_temp_TThermok();
+    read_temp_TThermok_ext();
 }, time_interval_TThermok);
-setInterval(() => {
-    read_temp_Hora();
-}, time_interval_hour);
+
 
 function read_temp_TThermok() {
 
@@ -48,6 +55,29 @@ function read_temp_TThermok() {
             temp_aux = temperatura[index];
             temperatura = temp_aux;
             /*     console.log(temperatura); */
+        }
+
+    });
+
+
+}
+function read_temp_TThermok_ext() {
+
+    // Get a reference to the database service
+
+    temperatura_TThermok = [];
+    var TThermok;
+    const dbRef = firebase.database().ref('Nodemcu/TThermok').limitToLast(10);
+
+
+    dbRef.on('value', function (snapshot) {
+
+        var temp_aux = snapshot.val();
+        for (var index in temp_aux) {
+            TThermok = temp_aux[index];
+
+            temperatura_TThermok.push(parseFloat(TThermok));
+
         }
 
     });
@@ -97,7 +127,7 @@ function read_temp_Minutes() {
             temperatura_minuto.push(parseFloat(minuto));
 
         }
-        /*   console.log(temperatura_hora); */
+        /* console.log(temperatura_minuto); */
 
     });
 
@@ -124,6 +154,47 @@ function read_temp_Days() {
         /*   console.log(temperatura_dia); */
     });
 }
+function read_temp_Months() {
+    // Get a reference to the database service
+
+    temperatura_month = [];
+    var month;
+    var monthRef = firebase.database().ref('Nodemcu/Mes').limitToLast(10);
+
+
+    monthRef.on('value', function (snapshot) {
+        var monthAux = snapshot.val();
+
+        for (var index in monthAux) {
+            month = monthAux[index];
+            temperatura_month.push(parseFloat(month));
+
+        }
+
+        /* console.log(temperatura_month); */
+    });
+}
+function read_temp_Anios() {
+    // Get a reference to the database service
+
+    temperatura_anio = [];
+    var anio;
+    var anioRef = firebase.database().ref('Nodemcu/Ano').limitToLast(10);
+
+
+    anioRef.on('value', function (snapshot) {
+        var anioAux = snapshot.val();
+
+        for (var index in anioAux) {
+            anio = anioAux[index];
+            temperatura_anio.push(parseFloat(anio));
+
+        }
+
+        /* console.log(temperatura_anio); */
+    });
+}
+
 const auth = firebase.auth();
 $("#signInWithMail").on("click", function () {
     var email = $("#mail").val();
