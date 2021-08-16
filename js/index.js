@@ -1,10 +1,6 @@
 var time_default = 3000;
 var time_interval_TThermok = 6000;
-/* var time_interval_hour = 300000;
-var time_interval_minute = 30000;
-var time_interval_day = 30000;
-var time_interval_month = 30000;
-var time_interval_anio = 30000; */
+
 var temperatura;
 var temperatura_TThermok = [];
 var temperatura_hora = [];
@@ -23,11 +19,11 @@ $(document).ready(function () {
     read_temp_Months();
     read_temp_Anios();
     if (localStorage.getItem('token') != null) {
-        $("#root").css({ "display": "none" });
+        /*    $("#root").css({ "display": "block" }); */
         $("#app").css({ "display": "block" });
-        $("#logoutli").css({ "display": "flex" });
+        $("#logoutli").css({ "display": "none" });
     } else {
-        $("#root").css({ "display": "block" });
+        $("#app").css({ "display": "block" });
     }
 
 
@@ -197,13 +193,13 @@ function read_temp_Anios() {
     });
 }
 
-const auth = firebase.auth();
+/* const auth = firebase.auth();
 $("#signInWithMail").on("click", function () {
     var email = $("#mail").val();
     var password = $("#password").val();
 
     auth.signInWithEmailAndPassword(email, password).then((userCredential) => {
-        /*   console.log(userCredential); */
+
     });
 })
 
@@ -215,7 +211,6 @@ $("#logout").on("click", (e) => {
     e.preventDefault();
     auth.signOut().then((result) => {
         localStorage.clear();
-        /*     console.log("signup out"); */
         $("#app").css({ "display": "none" });
         $("#root").css({ "display": "block" });
         $("#logoutli").css({ "display": "none" });
@@ -230,8 +225,7 @@ $("#googleLogin").on("click", (e) => {
 
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider).then((result) => {
-        /*      console.log(result); */
-        /*    console.log("google sign in"); */
+
         localStorage.setItem('token', result.credential.idToken);
         $("#root").css({ "display": "none" });
         $("#app").css({ "display": "block" });
@@ -242,4 +236,4 @@ $("#googleLogin").on("click", (e) => {
             console.log(err);
         })
 });
-
+ */

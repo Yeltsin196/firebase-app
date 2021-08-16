@@ -6,7 +6,7 @@
   display: none;
 }
 #app {
-  display: none;
+  display: block;
 }
 #root {
   display: none;
