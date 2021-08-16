@@ -26,6 +26,8 @@ $(document).ready(function () {
         $("#root").css({ "display": "none" });
         $("#app").css({ "display": "block" });
         $("#logoutli").css({ "display": "flex" });
+    } else {
+        $("#root").css({ "display": "block" });
     }
 
 
@@ -201,7 +203,7 @@ $("#signInWithMail").on("click", function () {
     var password = $("#password").val();
 
     auth.signInWithEmailAndPassword(email, password).then((userCredential) => {
-        console.log(userCredential);
+        /*   console.log(userCredential); */
     });
 })
 
@@ -213,7 +215,7 @@ $("#logout").on("click", (e) => {
     e.preventDefault();
     auth.signOut().then((result) => {
         localStorage.clear();
-        console.log("signup out");
+        /*     console.log("signup out"); */
         $("#app").css({ "display": "none" });
         $("#root").css({ "display": "block" });
         $("#logoutli").css({ "display": "none" });
@@ -228,7 +230,7 @@ $("#googleLogin").on("click", (e) => {
 
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider).then((result) => {
-        console.log(result);
+        /*      console.log(result); */
         /*    console.log("google sign in"); */
         localStorage.setItem('token', result.credential.idToken);
         $("#root").css({ "display": "none" });

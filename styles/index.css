@@ -5,7 +5,12 @@
 #app {
   display: none;
 }
-
+#app {
+  display: none;
+}
+#root {
+  display: none;
+}
 #logoutli {
   display: none;
 }
