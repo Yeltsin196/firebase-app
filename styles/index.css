@@ -14,3 +14,19 @@
 #logoutli {
   display: none;
 }
+
+nav,
+hr {
+  background: linear-gradient(
+    to right,
+    rgb(230, 92, 0),
+    rgb(249, 212, 35)
+  ) !important;
+}
+hr {
+  height: 0.1rem;
+}
+
+#cerrar-modal {
+  background-color: #e65c00;
+}

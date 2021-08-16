@@ -32,8 +32,8 @@ function cargar_medidas_TThermok() {
             datasets: [{
                 data: temperatura_TThermok,
                 label: "Total",
-                borderColor: "#3e95cd",
-                backgroundColor: "#7bb6dd",
+                borderColor: "#F9D423",
+                backgroundColor: "#e65c00",
                 fill: false,
             },
             ]
