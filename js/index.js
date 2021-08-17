@@ -35,10 +35,10 @@ $(document).ready(function () {
 setInterval(() => {
     fecha_hoy = new Date();
 }, 1000);
-setInterval(() => {
+/* setInterval(() => {
     read_temp_TThermok();
     read_temp_TThermok_ext();
-}, time_interval_TThermok);
+}, 8000); */
 
 
 function read_temp_TThermok() {
@@ -51,12 +51,12 @@ function read_temp_TThermok() {
 
     dbRef.on('value', function (snapshot) {
         temperatura = snapshot.val();
-        var temp_aux;
+        var temp_aux = 0;
 
         for (var index in temperatura) {
             temp_aux = temperatura[index];
             temperatura = temp_aux;
-            /*     console.log(temperatura); */
+            /*  console.log(temperatura); */
         }
 
     });
@@ -67,13 +67,13 @@ function read_temp_TThermok_ext() {
 
     // Get a reference to the database service
 
-    temperatura_TThermok = [];
-    var TThermok;
+
     const dbRef = firebase.database().ref('Nodemcu/TThermok').limitToLast(10);
 
 
     dbRef.on('value', function (snapshot) {
-
+        temperatura_TThermok = [];
+        var TThermok = 0;
         var temp_aux = snapshot.val();
         for (var index in temp_aux) {
             TThermok = temp_aux[index];
@@ -91,12 +91,13 @@ function read_temp_Hora() {
 
     // Get a reference to the database service
 
-    temperatura_hora = [];
-    var hora;
+
     var horaRef = firebase.database().ref('Nodemcu/Hora').limitToLast(10);
 
 
     horaRef.on('value', function (snapshot) {
+        temperatura_hora = [];
+        var hora;
         var horaAux = snapshot.val();
 
         for (var index in horaAux) {
@@ -116,12 +117,13 @@ function read_temp_Minutes() {
 
     // Get a reference to the database service
 
-    temperatura_minuto = [];
-    var minuto;
+
     var minutoRef = firebase.database().ref('Nodemcu/Minutos').limitToLast(10);
 
 
     minutoRef.on('value', function (snapshot) {
+        temperatura_minuto = [];
+        var minuto;
         var minutoAux = snapshot.val();
 
         for (var index in minutoAux) {
@@ -139,12 +141,13 @@ function read_temp_Minutes() {
 function read_temp_Days() {
     // Get a reference to the database service
 
-    temperatura_dia = [];
-    var dia;
+
     var diaRef = firebase.database().ref('Nodemcu/Dia').limitToLast(10);
 
 
     diaRef.on('value', function (snapshot) {
+        temperatura_dia = [];
+        var dia;
         var diaAux = snapshot.val();
 
         for (var index in diaAux) {
@@ -159,12 +162,13 @@ function read_temp_Days() {
 function read_temp_Months() {
     // Get a reference to the database service
 
-    temperatura_month = [];
-    var month;
+
     var monthRef = firebase.database().ref('Nodemcu/Mes').limitToLast(10);
 
 
     monthRef.on('value', function (snapshot) {
+        temperatura_month = [];
+        var month;
         var monthAux = snapshot.val();
 
         for (var index in monthAux) {
@@ -179,12 +183,13 @@ function read_temp_Months() {
 function read_temp_Anios() {
     // Get a reference to the database service
 
-    temperatura_anio = [];
-    var anio;
+
     var anioRef = firebase.database().ref('Nodemcu/Ano').limitToLast(10);
 
 
     anioRef.on('value', function (snapshot) {
+        temperatura_anio = [];
+        var anio;
         var anioAux = snapshot.val();
 
         for (var index in anioAux) {

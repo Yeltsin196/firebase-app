@@ -3,6 +3,7 @@ var TThermoks_label = [];
 var cant_TThermoks = 10;
 var chart_TThermok;
 
+var config_TT;
 setTimeout(() => {
     cargar_label();
     cargar_medidas_TThermok();
@@ -14,7 +15,9 @@ setInterval(() => {
 function cargar_label() {
     TThermoks_label = [];
     for (i = 0; i < cant_TThermoks; i++) {
-
+        if (temperatura_minuto[i] < 10) {
+            temperatura_minuto[i] = `0${temperatura_minuto[i]}`;
+        }
         var fecha = `${temperatura_dia[i]}/${temperatura_month[i]}/${temperatura_anio[i]}  ${temperatura_hora[i]}:${temperatura_minuto[i]}:00`
 
 
@@ -25,7 +28,7 @@ function cargar_label() {
 
 
 function cargar_medidas_TThermok() {
-    chart_TThermok = new Chart(ctx, {
+    config_TT = {
         type: 'line',
         data: {
             labels: TThermoks_label,
@@ -38,13 +41,18 @@ function cargar_medidas_TThermok() {
             },
             ]
         },
-    });
+    };
+    chart_TThermok = new Chart(ctx, config_TT);
 }
 
 function addData(chart_TThermok) {
-    chart_TThermok.data.labels = TThermoks_label;
+    config_TT.data.datasets.forEach(function (dataset) {
+        dataset.data = TThermoks_label;
+        dataset.data = temperatura_TThermok;
 
 
-    chart_TThermok.data.datasets.data = temperatura_TThermok;
-    window.chart_TThermok.update();
+    });
+
+
+    chart_TThermok.update();
 }
